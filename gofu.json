@@ -1,0 +1,62 @@
+{
+    "name": "golang-project",
+    "arguments": [
+        {
+            "name": "appName",
+            "text": "Set the application name",
+            "default": "go-app"
+        },
+        {
+            "name": "appDescription",
+            "text": "Set a short one-line description",
+            "default": "A basic Go application."
+        }        
+    ],
+    "structure": [
+        {
+            "name": "bin",
+            "type": "directory"
+        },
+        {
+            "name": "cmd",
+            "type": "directory",
+            "parse": false,
+            "children": [
+                {
+                    "name": "!!!appName",
+                    "type": "directory",
+                    "parse": true,
+                    "children": [
+                        {
+                            "name": "main",
+                            "type": "file",
+                            "file_reference": "cmd/!!!appName/main.go",
+                            "parse": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Makefile",
+            "type": "file",
+            "extension": "",
+            "file_reference": "Makefile",
+            "parse": true
+        },        
+        {
+            "name": "",
+            "type": "file",
+            "extension": "gitignore",
+            "file_reference": ".gitignore",
+            "parse": false
+        },
+        {
+            "name": "README",
+            "type": "file",
+            "extension": "md",
+            "file_reference": "README.md",
+            "parse": true
+        }
+    ]
+}
